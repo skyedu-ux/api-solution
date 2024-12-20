@@ -1,0 +1,1 @@
+const a={home:{base:()=>"/"},contact:{base:()=>"/contact"},about:{base:()=>"/about"},blog:{base:()=>"/blog",create:()=>"/blog/create",edit:t=>`/blog/edit/${t}`,detail:t=>`/blog/${t}`}};export{a as p};
