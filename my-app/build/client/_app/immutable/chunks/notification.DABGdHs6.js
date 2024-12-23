@@ -1,1 +1,0 @@
-import{w as a}from"./index.BPQfFJo-.js";const i=a([]),n=t=>{const s=Math.floor(Math.random()*1e4),o={id:s,type:"info",dismissible:!0,timeout:3e3};i.update(e=>[{...o,...t},...e]),t.timeout&&setTimeout(()=>{console.log("dismissToast",s),d(s),t.timeout})},d=t=>{i.update(s=>s.filter(o=>o.id!==t))};export{n as a,d,i as t};

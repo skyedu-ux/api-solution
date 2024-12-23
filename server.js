@@ -241,7 +241,7 @@ const paginate = (array, page, limit) => {
   };
   
   // API endpoint to get a list of blogs with pagination, search, and category filter
-  app.get('/api/data/blogs', authenticateAdmin, (req, res) => {
+  app.get('/api/data/blogs', (req, res) => {
     const { page = 1, limit = 10, search = '', categoryIds = [] } = req.query;
   
     const filteredBlogs = searchBlogs(jsonData.blogData.blogs, search);

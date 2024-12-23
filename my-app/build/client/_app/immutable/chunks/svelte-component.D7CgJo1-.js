@@ -1,1 +1,0 @@
-import{j as r,q as c,e as s,E as i,g as h,k as p,v as d}from"./runtime.C4Zm_SMD.js";function u(t,f,o){r&&c();var n=t,a,e;s(()=>{a!==(a=f())&&(e&&(d(e),e=null),a&&(e=h(()=>o(n,a))))},i),r&&(n=p)}export{u as c};
