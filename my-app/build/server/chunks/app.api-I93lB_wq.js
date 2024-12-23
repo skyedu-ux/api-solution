@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3000/api/data";
+const baseUrl = "https://sky-solution.up.railway.app/api/data";
 const appApi = {
   getData: async (role = "user") => {
     const response = await fetch(`${baseUrl}?role=${role}`, {
@@ -71,7 +71,7 @@ const appApi = {
     return response;
   },
   login: async (data) => {
-    const response = await fetch(`http://localhost:3000/api/login`, {
+    const response = await fetch(`https://sky-solution.up.railway.app/api/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
