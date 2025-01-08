@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import path, { dirname } from "path";
 import fs from "fs";
-import { handler } from "../solution-demo-1/my-app/build/handler.js";
+import { handler } from "./my-app/build/handler.js";
 import bodyParser from "body-parser";
 import { fileURLToPath } from 'url';
 import multer from 'multer';
