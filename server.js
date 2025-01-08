@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import path, { dirname } from "path";
 import fs from "fs";
-import { handler } from "./my-app/build/handler.js";
+import { handler } from "../solution-demo-1/my-app/build/handler.js";
 import bodyParser from "body-parser";
 import { fileURLToPath } from 'url';
 import multer from 'multer';
@@ -336,6 +336,24 @@ const paginate = (array, page, limit) => {
     res.status(200).json({ message: 'Blog deleted successfully' });
   });
 
+    
+  // API endpoint to get a list of blogs with pagination, search, and category filter
+  app.get('/api/data/jobs', (req, res) => {
+    const { page = 1, limit = 10, search = '' } = req.query;
+  
+    
+   
+    const paginateJobs = paginate(jsonData.jobData, parseInt(page), parseInt(limit));
+  
+    res.status(200).json({
+      jobs: paginateJobs,
+      totalJobs: jsonData.jobData.length,
+      totalPages: Math.ceil(jsonData.jobData.length / limit),
+      page: parseInt(page),
+      limit: parseInt(limit)
+    });
+  });
+  
 
   // APi create a job
     app.post('/api/data/job', authenticateAdmin, (req, res) => {
@@ -356,7 +374,55 @@ const paginate = (array, page, limit) => {
     
         res.status(201).json(newJob);
     });
-  
+
+      // API endpoint to delete a job
+  app.delete('/api/data/jobs/:id', authenticateAdmin, (req, res) => {
+    const { id } = req.params;
+    
+    const jobIndex = jsonData.jobData.findIndex(job => job.id === parseInt(id));
+    
+    if (jobIndex === -1) {
+      return res.status(404).json({ error: 'Job not found' });
+    }
+    
+    jsonData.blogData.blogs.splice(jobIndex, 1);
+    fs.writeFileSync(dataFilePath, JSON.stringify(jsonData, null, 2));
+    
+    res.status(200).json({ message: 'Job deleted successfully' });
+  });
+
+    // API endpoint to edit an existing job
+    app.put('/api/data/jobs/:id', authenticateAdmin, (req, res) => {
+        const { id } = req.params;
+        const { jobDescription, salary, company ,salaryVND,place,estimatedFilingDate,benefit,note,signature,spot } = req.body;
+      
+        const jobIndex = jsonData.jobData.findIndex(job => job.id === parseInt(id));
+      
+        if (jobIndex === -1) {
+          return res.status(404).json({ message: 'Job not found' });
+        }
+      
+        // Update job
+        const updatedJob = { ...jsonData.jobData[jobIndex],...req.body};
+        jsonData.jobData[jobIndex] = updatedJob;
+      
+        fs.writeFileSync(dataFilePath, JSON.stringify(jsonData, null, 2));
+      
+        res.status(200).json(updatedJob); })
+
+
+        // API endpoint to get an existing job
+    app.get('/api/data/jobs/:id', (req, res) => {
+        const { id } = req.params;
+      
+        const jobIndex = jsonData.jobData.findIndex(job => job.id === parseInt(id));
+      
+        if (jobIndex === -1) {
+          return res.status(404).json({ message: 'Job not found' });
+        }
+      
+        res.status(200).json(jsonData.jobData[jobIndex]);
+      })
 
 app.use(handler);
 
