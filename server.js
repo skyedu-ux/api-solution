@@ -256,6 +256,23 @@ const paginate = (array, page, limit) => {
       limit: parseInt(limit)
     });
   });
+  // API endpoint to get an existing blog
+  app.get('/api/data/blogs/:id', (req, res) => {
+        const { id } = req.params;
+  
+      
+        const blogIndex = jsonData.blogData.blogs.findIndex(blog => blog.id === parseInt(id));
+      
+        if (blogIndex === -1) {
+          return res.status(404).json({ message: 'Blog not found' });
+        }
+      
+     
+      
+        res.status(200).json({
+            data: (jsonData.blogData.blogs)[blogIndex]
+        });
+      });
   
   // API endpoint to create a new blog
   app.post('/api/data/blogs', authenticateAdmin, (req, res) => {
@@ -282,24 +299,7 @@ const paginate = (array, page, limit) => {
   
     res.status(201).json(newBlog);
   });
-    // API endpoint to get an existing blog
-    app.get('/api/data/blogs/:id', (req, res) => {
-        const { id } = req.params;
-  
-      
-        const blogIndex = jsonData.blogData.blogs.findIndex(blog => blog.id === parseInt(id));
-      
-        if (blogIndex === -1) {
-          return res.status(404).json({ message: 'Blog not found' });
-        }
-      
-     
-      
-        res.status(200).json({
-            data: (jsonData.blogData.blogs)[blogIndex]
-        });
-      });
-  
+
   // API endpoint to edit an existing blog
   app.put('/api/data/blogs/:id', authenticateAdmin, (req, res) => {
     const { id } = req.params;
