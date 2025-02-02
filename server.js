@@ -283,7 +283,7 @@ const paginate = (array, page, limit) => {
     res.status(201).json(newBlog);
   });
     // API endpoint to get an existing blog
-    app.get('/api/data/blogs/:id', authenticateAdmin, (req, res) => {
+    app.get('/api/data/blogs/:id', (req, res) => {
         const { id } = req.params;
   
       
