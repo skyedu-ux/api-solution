@@ -257,22 +257,22 @@ const paginate = (array, page, limit) => {
     });
   });
   // API endpoint to get an existing blog
-  app.get('/api/data/blogs/:id', (req, res) => {
-        const { id } = req.params;
+  // app.get('/api/data/blogs/:id', (req, res) => {
+  //       const { id } = req.params;
   
       
-        const blogIndex = jsonData.blogData.blogs.findIndex(blog => blog.id === parseInt(id));
+  //       const blogIndex = jsonData.blogData.blogs.findIndex(blog => blog.id === parseInt(id));
       
-        if (blogIndex === -1) {
-          return res.status(404).json({ message: 'Blog not found' });
-        }
+  //       if (blogIndex === -1) {
+  //         return res.status(404).json({ message: 'Blog not found' });
+  //       }
       
      
       
-        res.status(200).json({
-            data: (jsonData.blogData.blogs)[blogIndex]
-        });
-      });
+  //       res.status(200).json({
+  //           data: (jsonData.blogData.blogs)[blogIndex]
+  //       });
+  //     });
   
   // API endpoint to create a new blog
   app.post('/api/data/blogs', authenticateAdmin, (req, res) => {
