@@ -138,7 +138,7 @@
     "address": "55 Main Street, 2nd block, Malborne ,Australiaaa",
     "phoneNumberDisplay": "+236 (456) 896 222",
     "phoneNumber": "124124124a221",
-    "logo": "http://localhost:3001/uploads/1738577312152.jpg",
+    "logo": "https://api-solution-production.up.railway.app/uploads/1738577312152.jpg",
     "dateWorking": "Monday to Friday",
     "timeStart": "9.30am",
     "timeEnd": "6.30pm",
@@ -353,7 +353,7 @@
         "date": "2025-02-04T05:58:09.022Z",
         "categoryIds": [],
         "content": "<h3>ádasdasd</h3><p>ádasdsadsad</p><p><code>ádasdsad</code></p><ul><li><p><code>ádasd</code></p></li><li><p><code>ádasdsad</code></p><p style=\"text-align: left\"><br>ádasdasdasdsad</p></li><li><p style=\"text-align: left\">ádasdasdsad</p></li><li><p style=\"text-align: left\">ádasdasdasd</p></li></ul><ol><li><p style=\"text-align: left\"></p></li></ol><p></p>",
-        "thumb": "http://localhost:3001/uploads/1738648616236.png",
+        "thumb": "https://api-solution-production.up.railway.app/uploads/1738648616236.png",
         "isPopular": false
       }
     ]
