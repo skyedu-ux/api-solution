@@ -1,1 +1,0 @@
-import"../chunks/disclose-version.Bg9kRutz.js";import"../chunks/legacy.CtaTdtmd.js";import{J as t}from"../chunks/JobList.98j8Ry5n.js";import"../chunks/entry.CC_BJODY.js";function n(o){t(o,{})}export{n as component};

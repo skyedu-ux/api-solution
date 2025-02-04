@@ -2,12 +2,11 @@ import express from "express";
 import cors from "cors";
 import path, { dirname } from "path";
 import fs from "fs";
-// import { handler } from "./my-app/build/handler.js";
 import bodyParser from "body-parser";
 import { fileURLToPath } from 'url';
 import multer from 'multer';
 import jwt from 'jsonwebtoken';
-
+import cookieParser from 'cookie-parser';
 const SECRET_KEY = 'your_secret_key';
 
 
@@ -33,11 +32,20 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+app.use(cookieParser());
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? 'your-production-domain.com'  // Replace with your actual production domain
+    : 'http://localhost:3000',      // Development frontend URL
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
+  exposedHeaders: ['Set-Cookie']
+}));
 app.use(bodyParser.json());
 
 // Path to your JSON file
@@ -57,21 +65,20 @@ const authenticateAdmin = (req, res, next) => {
         return next()
      }
 
-    const token = req.headers.authorization?.split(' ')[1]; // Expect "Bearer <token>"
+     const token = req.cookies?.access_token || req.headers.authorization?.split(' ')[1]; 
 
     if (!token) {
-        return res.status(401).json({ message: 'Unauthorized: No token provided' });
+        return res.status(401).json({ error: 'Unauthorized: No token provided' });
     }
-
     try {
         const decoded = jwt.verify(token, SECRET_KEY);
         if (decoded.role === 'admin') {
             return next(); // Proceed to the next middleware or route
         } else {
-            return res.status(403).json({ message: 'Unauthorized' });
+            return res.status(403).json({ error: 'Unauthorized' });
         }
     } catch (error) {
-        return res.status(401).json({ message: 'Unauthorized: Invalid token' });
+        return res.status(401).json({ error: 'Unauthorized: Invalid token' });
     }
 };
 
@@ -80,23 +87,50 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 
+// API endpoint to get header data
+app.get('/api/data/header',authenticateAdmin, (req, res) => {
+
+  const {role} = req.query;
+
+  if(role === 'user'){
+    return res.json(jsonData.headerUserData);
+  }
+  
+   return res.json(jsonData.headerAdminData);
+});
+// API endpoint to update info data
+app.post('/api/data/info',authenticateAdmin, (req, res) => {
+  if (!req.body) {
+    return res.status(400).json({error: 'Invalid data.'});
+}
+jsonData.infoData = { ...jsonData.infoData, ...req.body }
+
+
+
+fs.writeFileSync(dataFilePath, JSON.stringify(jsonData, null, 2));
+res.status(200).json({message: 'Data saved successfully.'});
+});
 
 // API endpoint to get data
 app.get('/api/data',authenticateAdmin, (req, res) => {
     res.json(jsonData);
 });
 
+// API endpoint to get info
+app.get('/api/data/info',authenticateAdmin, (req, res) => {
+    res.json(jsonData.infoData);
+});
+
 app.post('/api/login', (req, res) => {
     const { username, password } = req.body;
 
-    // Replace this with your user validation logic
     if (username === 'admin' && password === '123') {
         const token = jwt.sign({ username, role: 'admin' }, SECRET_KEY, { expiresIn: '5h' });
         
-
+  
         return res.status(200).json({ token });
     } else {
-        return res.status(200).json({ Error: 'Invalid username or password' });
+        return res.status(401).json({ Error: 'Invalid username or password' });
     }
 });
 
@@ -111,86 +145,120 @@ app.post('/api/data', authenticateAdmin,(req, res) => {
 // API endpoint to update headerUserData
 app.post('/api/data',authenticateAdmin,(req, res) => {
     if (!req.body || !req.body.data) {
-        return res.status(400).send('Invalid data.');
+        return res.status(400).json({
+            error: 'Invalid data.'
+        });
     }
 
-    // Update headerUserData
     jsonData = { ...jsonData, ...req.body.data };
     fs.writeFileSync(dataFilePath, JSON.stringify(jsonData, null, 2));
-    res.status(200).send('Data saved successfully.');
+    res.status(200).json({
+        message: 'Data saved successfully.'
+    });
 });
 // upload info data
 app.post('/api/data/info',authenticateAdmin, (req, res) => {
     if (!req.body || !req.body.data) {
-        return res.status(400).send('Invalid data.');
+        return res.status(400).json({error: 'Invalid data.'});
     }
 
     jsonData = { ...jsonData, infoData : {...jsonData.infoData ,...req.body.data} };
     fs.writeFileSync(dataFilePath, JSON.stringify(jsonData, null, 2));
-    res.status(200).send('Data saved successfully.');
+    res.status(200).json({message: 'Data saved successfully.'});
 });
 // upload home/hero section
 app.post('/api/data/hero',authenticateAdmin, (req, res) => {
-    if (!req.body || !req.body.data) {
-        return res.status(400).send('Invalid data.');
+    if (!req.body) {
+        return res.status(400).json({error: 'Invalid data.'});
     }
-
-    // Update headerUserData
-    jsonData = { ...jsonData, heroData : {...jsonData.heroData ,...req.body.data} };
+    jsonData = { ...jsonData, heroData : {...jsonData.heroData ,slides: req.body} };
     fs.writeFileSync(dataFilePath, JSON.stringify(jsonData, null, 2));
-    res.status(200).send('Data saved successfully.');
+    res.status(200).json({message: 'Data saved successfully.'});
 });
 
-// upload home/hero section
+// get home/hero section
+app.get('/api/data/hero', (req, res) => {
+
+  res.json(jsonData.heroData);
+});
+
+// upload home/team section
 app.post('/api/data/team',authenticateAdmin, (req, res) => {
-    if (!req.body || !req.body.data) {
-        return res.status(400).send('Invalid data.');
+    if (!req.body) {
+          return res.status(400).json({error: 'Invalid data.'});
     }
 
-    // Update headerUserData
-    jsonData = { ...jsonData, teamData : {...jsonData.teamData ,...req.body.data} };
+    jsonData = { ...jsonData, teamData : {...jsonData.teamData ,...req.body} };
     fs.writeFileSync(dataFilePath, JSON.stringify(jsonData, null, 2));
-    res.status(200).send('Data saved successfully.');
+    res.status(200).json({message: 'Data saved successfully.'});
+});
+// get home/team section
+app.get('/api/data/team', (req, res) => {
+
+  res.json(jsonData.heroData);
 });
 
 // upload home/About section
 app.post('/api/data/about',authenticateAdmin, (req, res) => {
-    if (!req.body || !req.body.data) {
-        return res.status(400).send('Invalid data.');
+    if (!req.body) {
+        return res.status(400).json({error: 'Invalid data.'});
     }
 
     // Update headerUserData
-    jsonData = { ...jsonData, aboutData : req.body.data };
+    jsonData = { ...jsonData, aboutData : req.body };
     fs.writeFileSync(dataFilePath, JSON.stringify(jsonData, null, 2));
-    res.status(200).send('Data saved successfully.');
+    res.status(200).json({message: 'Data saved successfully.'});
 });
-// upload home/About section
+// get home/About section
+app.get('/api/data/about', (req, res) => {
+  return res.json(jsonData.aboutData);
+});
+// upload home/Service section
 app.post('/api/data/service',authenticateAdmin, (req, res) => {
-    if (!req.body || !req.body.data) {
-        return res.status(400).send('Invalid data.');
+    if (!req.body) {
+        return res.status(400).json({error: 'Invalid data.'});
     }
 
-    // Update headerUserData
-    jsonData = { ...jsonData, serviceData : req.body.data };
+    jsonData = { ...jsonData, serviceData : req.body };
     fs.writeFileSync(dataFilePath, JSON.stringify(jsonData, null, 2));
-    res.status(200).send('Data saved successfully.');
+    return res.status(200).json({message: 'Data saved successfully.'});
+});
+// get home/service section
+app.get('/api/data/service', (req, res) => {
+  return res.json(jsonData.serviceData);
 });
 // upload home/Testimonial section
 app.post('/api/data/testimonial',authenticateAdmin, (req, res) => {
-    if (!req.body || !req.body.data) {
-        return res.status(400).send('Invalid data.');
+    if (!req.body) {
+        return res.status(400).json({error: 'Invalid data.'});
     }
 
     // Update headerUserData
-    jsonData = { ...jsonData, serviceData : req.body.data };
+    jsonData = { ...jsonData, testimonialData : req.body };
     fs.writeFileSync(dataFilePath, JSON.stringify(jsonData, null, 2));
-    res.status(200).send('Data saved successfully.');
+    return res.status(200).json({message: 'Data saved successfully.'});
+});
+// get home/testimonial section
+app.get('/api/data/testimonial', (req, res) => {
+  return res.json(jsonData.testimonialData);
+});
+
+// get home/hero section
+app.get('/api/data/home', (req, res) => {
+  return res.json({
+    heroData: jsonData.heroData,
+    teamData: jsonData.teamData,
+    aboutData: jsonData.aboutData,
+    serviceData: jsonData.serviceData,
+    testimonialData: jsonData.testimonialData
+  });
 });
 
 // API endpoint for image upload
 app.post('/api/upload',authenticateAdmin, upload.single('image'), (req, res) => {
+  console.log('req.file',req.file);
     if (!req.file) {
-        return res.status(400).send('No file uploaded.');
+        return res.status(400).json({error: 'No file uploaded.'});
     }
     
         // const oldImageName = req.body.oldImageName;
@@ -258,22 +326,22 @@ const paginate = (array, page, limit) => {
     });
   });
   // API endpoint to get an existing blog
-  // app.get('/api/data/blogs/:id', (req, res) => {
-  //       const { id } = req.params;
+  app.get('/api/data/blogs/:id', (req, res) => {
+        const { id } = req.params;
   
       
-  //       const blogIndex = jsonData.blogData.blogs.findIndex(blog => blog.id === parseInt(id));
+        const blogIndex = jsonData.blogData.blogs.findIndex(blog => blog.id === parseInt(id));
       
-  //       if (blogIndex === -1) {
-  //         return res.status(404).json({ message: 'Blog not found' });
-  //       }
+        if (blogIndex === -1) {
+          return res.status(404).json({ message: 'Blog not found' });
+        }
       
      
       
-  //       res.status(200).json({
-  //           data: (jsonData.blogData.blogs)[blogIndex]
-  //       });
-  //     });
+        res.status(200).json({
+            data: (jsonData.blogData.blogs)[blogIndex]
+        });
+      });
   
   // API endpoint to create a new blog
   app.post('/api/data/blogs', authenticateAdmin, (req, res) => {
@@ -367,7 +435,8 @@ const paginate = (array, page, limit) => {
         // }
     
         const newJob = {
-          ...req.body
+          ...req.body,
+          id: jsonData.jobData.length + 1
         };
     
         jsonData.jobData.push(newJob);
@@ -386,7 +455,7 @@ const paginate = (array, page, limit) => {
       return res.status(404).json({ error: 'Job not found' });
     }
     
-    jsonData.blogData.blogs.splice(jobIndex, 1);
+    jsonData.jobData.splice(jobIndex, 1);
     fs.writeFileSync(dataFilePath, JSON.stringify(jsonData, null, 2));
     
     res.status(200).json({ message: 'Job deleted successfully' });
@@ -425,7 +494,7 @@ const paginate = (array, page, limit) => {
         res.status(200).json(jsonData.jobData[jobIndex]);
       })
 
-app.use(handler);
+// app.use(handler);
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

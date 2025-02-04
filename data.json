@@ -38,7 +38,6 @@
           }
         ]
       },
-
       {
         "label": "Tin Tức",
         "link": "/news"
@@ -46,97 +45,6 @@
       {
         "label": "Liên hệ",
         "link": "/contact"
-      }
-    ]
-  },
-  "footerData": {
-    "logo": "https://placehold.co/150x75",
-    "exploreLinks": [
-      {
-        "label": "About",
-        "link": "/"
-      },
-      {
-        "label": "Contact",
-        "link": "/contact"
-      }
-    ]
-  },
-  "infoData": {
-    "email": "info22222@example.coms",
-    "address": "55 Main Street, 2nd block, Malborne ,Australia",
-    "phoneNumberDisplay": "+236 (456) 896 22",
-    "phoneNumber": "+23645689622",
-    "logo": "http://sky-solution.up.railway.app/uploads/1734428457073.png",
-    "dateWorking": "Monday to Friday",
-    "timeStart": "9.30am",
-    "timeEnd": "6.30pm",
-    "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.2623362969166!2d106.73568987618644!3d10.714237789430777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175254457f64953%3A0x64d1add80c6c61f!2zMTUgSG_DoG5nIFF14buRYyBWaeG7h3QsIFBow7ogTeG7uSwgUXXhuq1uIDcsIEjhu5MgQ2jDrSBNaW5oIDcyOTU2LCBWaWV0bmFt!5e0!3m2!1sen!2s!4v1733298993005!5m2!1sen!2s",
-    "socialLinks": [
-      {
-        "label": "Facebook",
-        "link": "#fdsfsdsd",
-        "iconClass": "fab fa-facebook-f"
-      },
-      {
-        "icon": "Twitter",
-        "link": "#sdfsdfasdasd",
-        "iconClass": "fab fa-twitter"
-      },
-      {
-        "icon": "Printerest",
-        "link": "#",
-        "iconClass": "fab fa-pinterest-p"
-      }
-    ]
-  },
-  "aboutData": {
-    "imgLarge": "http://sky-solution.up.railway.app/uploads/1734433273778.jpg",
-    "img": "http://sky-solution.up.railway.app/uploads/1734432645561.jpg",
-    "avatarCeo": "https://placehold.co/68x68",
-    "title": "Về Chúng Tôi",
-    "description": "Chúng tôi hiểu rằng mỗi hành trình du học và định cư là một quyết định quan trọng và đầy thử thách. Chính vì thế, Sky Solution luôn nỗ lực mang đến giải pháp phù hợp, giúp khách hàng dễ dàng tiếp cận cơ hội học tập và sống tại nước ngoài.",
-    "circleBars": [
-      {
-        "title": "Business Strategy",
-        "percent": 68
-      },
-      {
-        "title": "Real Technology Solutions",
-        "percent": 93
-      }
-    ],
-    "aboutList": [
-      "Immigration & Visa Consulting",
-      "Direct Online Interview",
-      "99% Visa Approvals"
-    ]
-  },
-  "heroData": {
-    "slides": [
-      {
-        "background": "http://sky-solution.up.railway.app/uploads/1734428845753.jpg",
-        "tag": "Tư Vấn Du Học",
-        "title": "Tư Vấn & <br>  Chìa Khóa Mở Cửa <br>  Tương Lai... ",
-        "description": "Với đội ngũ chuyên gia tư vấn giàu kinh nghiệm, chúng tôi sẽ đồng hành cùng bạn trong từng bước chuẩn <br> bị hồ sơ du học và định cư. Từ việc chọn trường học, ngành học phù hợp đến chuẩn bị tài chính và <br> các giấy tờ quan trọng, chúng tôi giúp bạn thực hiện ước mơ du học một cách dễ dàng.",
-        "btnLink": "/",
-        "btnText": "Learn More"
-      },
-      {
-        "background": "http://sky-solution.up.railway.app/uploads/1734429132362.jpg",
-        "tag": "Định Cư Nước Ngoài",
-        "title": "Định Cư Tại Các & <br>  Quốc Gia Phát Triển <br>",
-        "description": "Bạn muốn định cư tại những quốc gia như Mỹ, Canada, Úc? Chúng tôi giúp bạn tìm hiểu <br> các chính sách định cư, tư vấn các loại visa và hỗ trợ các thủ tục pháp lý, giúp bạn và <br> gia đình có một cuộc sống mới đầy triển vọng ở nước ngoài.",
-        "btnLink": "/",
-        "btnText": "Learn More"
-      },
-      {
-        "background": "http://sky-solution.up.railway.app/uploads/1734429246053.jpg",
-        "tag": "Du Học Toàn Cầu",
-        "title": "Khám Phá Cơ Hội Du Học Hàng Đầu",
-        "description": "Chúng tôi mang đến cho bạn những lựa chọn du học tốt nhất tại các quốc gia phát triển.<br> Từ các chương trình học bổng, tư vấn trường học cho đến hỗ trợ visa, mọi bước đi của bạn đều được chúng tôi hỗ trợ để đảm bảo bạn có trải nghiệm học tập quốc tế tuyệt vời nhất.",
-        "btnLink": "/home",
-        "btnText": "find more"
       }
     ]
   },
@@ -168,31 +76,149 @@
         "image": "http://sky-solution.up.railway.app/uploads/1734578293656.jpg",
         "link": ""
       }
+    ]},
+  "headerAdminData": {
+    "logo": "https://placehold.co/120x60",
+    "menuLinks": [
+      {
+        "label": "Information",
+        "link": "/admin"
+      },
+      {
+        "label": "Home Config",
+        "link": "/admin/home/hero",
+        "children": [
+          {
+            "label": "Hero Config",
+            "link": "/admin/home/hero"
+          },
+          {
+            "label": "Service Config",
+            "link": "/admin/home/service"
+          },
+          {
+            "label": "About Config",
+            "link": "/admin/home/about"
+          },
+          {
+            "label": "Team Config",
+            "link": "/admin/home/team"
+          },
+          {
+            "label": "Testimonial Config",
+            "link": "/admin/home/testimonial"
+          }
+        ]
+      },
+      {
+        "label": "News Config",
+        "link": "/admin/news"
+      },
+      {
+        "label": "Job Config",
+        "link": "/admin/jobs"
+      }
+    ]
+  },
+  "footerData": {
+    "logo": "https://placehold.co/150x75",
+    "exploreLinks": [
+      {
+        "label": "About",
+        "link": "/"
+      },
+      {
+        "label": "Contact",
+        "link": "/contact"
+      }
+    ]
+  },
+  "infoData": {
+    "email": "info22222@example.comssssa",
+    "address": "55 Main Street, 2nd block, Malborne ,Australiaaa",
+    "phoneNumberDisplay": "+236 (456) 896 222",
+    "phoneNumber": "124124124a221",
+    "logo": "http://localhost:3001/uploads/1738577312152.jpg",
+    "dateWorking": "Monday to Friday",
+    "timeStart": "9.30am",
+    "timeEnd": "6.30pm",
+    "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.2623362969166!2d106.73568987618644!3d10.714237789430777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175254457f64953%3A0x64d1add80c6c61f!2zMTUgSG_DoG5nIFF14buRYyBWaeG7h3QsIFBow7ogTeG7uSwgUXXhuq1uIDcsIEjhu5MgQ2jDrSBNaW5oIDcyOTU2LCBWaWV0bmFt!5e0!3m2!1sen!2s!4v1733298993005!5m2!1sen!2s",
+    "socialLinks": [
+      {
+        "label": "Facebook",
+        "link": "#fdsfsdsd",
+        "iconClass": "fab fa-facebook-f"
+      },
+      {
+        "icon": "Twitter",
+        "link": "#sdfsdfasdasd",
+        "iconClass": "fab fa-twitter"
+      },
+      {
+        "icon": "Printerest",
+        "link": "#",
+        "iconClass": "fab fa-pinterest-p"
+      }
     ],
-    "members": [
+    "phoneDisplay": "+236 (456) 896 222",
+    "phone": "+236456896222",
+    "workingDays": "Monday to Weddd",
+    "startTime": "9.30amm",
+    "endTime": "6.30pmm",
+    "facebookLink": "#fdsfsdsdd",
+    "twitterLink": "#sdfsdfasdasdd",
+    "printerestLink": "##"
+  },
+  "aboutData": {
+    "imgLarge": "http://sky-solution.up.railway.app/uploads/1734433273778.jpg",
+    "img": "http://sky-solution.up.railway.app/uploads/1734432645561.jpg",
+    "avatarCeo": "https://placehold.co/68x68",
+    "title": "Về Chúng Tôi",
+    "description": "Chúng tôi hiểu rằng mỗi hành trình du học và định cư là một quyết định quan trọng và đầy thử thách. Chính vì thế, Sky Solution luôn nỗ lực mang đến giải pháp phù hợp, giúp khách hàng dễ dàng tiếp cận cơ hội học tập và sống tại nước ngoài.",
+    "circleBars": [
       {
-        "title": "Visa Kinh Doanh",
-        "description": "Cung cấp cơ hội cho các nhà đầu tư và doanh nhân mở rộng cơ hội kinh doanh quốc tế và phát triển sự nghiệp.",
-        "image": "http://sky-solution.up.railway.app/uploads/1734578277095.jpg",
-        "link": ""
+        "title": "Business Strategy",
+        "percent": 68
       },
       {
-        "title": "Visa Học Sinh",
-        "description": "Hỗ trợ sinh viên quốc tế đạt được ước mơ học tập tại các trường đại học danh tiếng trên thế giới.",
-        "image": "http://sky-solution.up.railway.app/uploads/1734578282675.jpg",
-        "link": ""
+        "title": "Real Technology Solutions",
+        "percent": 93
+      }
+    ],
+    "aboutList": [
+      "Immigration & Visa Consulting",
+      "Direct Online Interview",
+      "99% Visa Approvals"
+    ]
+  },
+  "heroData": {
+    "slides": [
+      {
+        "background": "http://sky-solution.up.railway.app/uploads/1734428845753.jpg",
+        "tag": "Tư Vấn Du Học",
+        "title": "Tư Vấn & <br>  Chìa Khóa Mở Cửa <br>  Tương Lai... ",
+        "description": "Với đội ngũ chuyên gia tư vấn giàu kinh nghiệm, chúng tôi sẽ đồng hành cùng bạn trong từng bước chuẩn <br> bị hồ sơ du học và định cư. Từ việc chọn trường học, ngành học phù hợp đến chuẩn bị tài chính và <br> các giấy tờ quan trọng, chúng tôi giúp bạn thực hiện ước mơ du học một cách dễ dàng.",
+        "btnLink": "/",
+        "btnText": "Learn More",
+        "id": 1
       },
       {
-        "title": "Visa Làm Việc",
-        "description": "Giúp bạn tìm kiếm cơ hội làm việc và phát triển sự nghiệp tại các quốc gia phát triển với Visa lao động hợp lệ.",
-        "image": "http://sky-solution.up.railway.app/uploads/1734578286100.jpg",
-        "link": ""
+        "background": "http://sky-solution.up.railway.app/uploads/1734429132362.jpg",
+        "tag": "Định Cư Nước Ngoài",
+        "title": "Định Cư Tại Các & <br>  Quốc Gia Phát Triển <br>",
+        "description": "Bạn muốn định cư tại những quốc gia như Mỹ, Canada, Úc? Chúng tôi giúp bạn tìm hiểu <br> các chính sách định cư, tư vấn các loại visa và hỗ trợ các thủ tục pháp lý, giúp bạn và <br> gia đình có một cuộc sống mới đầy triển vọng ở nước ngoài.",
+        "btnLink": "/",
+        "btnText": "Learn More",
+        "id": 2
       },
       {
-        "title": "Visa Du Lịch",
-        "description": "Cung cấp các dịch vụ thị thực du lịch giúp bạn khám phá các điểm đến tuyệt vời trên thế giới một cách dễ dàng.",
-        "image": "http://sky-solution.up.railway.app/uploads/1734578293656.jpg",
-        "link": ""
+        "background": "http://sky-solution.up.railway.app/uploads/1734429246053.jpg",
+        "tag": "Du Học Toàn Cầu",
+        "title": "Khám Phá Cơ Hội Du Học Hàng Đầu",
+        "description": "Chúng tôi mang đến cho bạn những lựa chọn du học tốt nhất tại các quốc gia phát triển.<br> Từ các chương trình học bổng, tư vấn trường học cho đến hỗ trợ visa, mọi bước đi của bạn đều được chúng tôi hỗ trợ để đảm bảo bạn có trải nghiệm học tập quốc tế tuyệt vời nhất.",
+        "btnLink": "/home",
+        "btnText": "find more",
+        "id": 3
       }
     ]
   },
@@ -249,7 +275,7 @@
         "name": "Nguyễn Minh Tâm",
         "job": "Lập Trình Viên Web",
         "text": "Dịch vụ của công ty giúp tôi tiết kiệm thời gian và công sức rất nhiều. Họ không chỉ hỗ trợ kỹ thuật mà còn tư vấn về cách tối ưu hóa hiệu suất công việc. Một sự lựa chọn tuyệt vời cho mọi người trong ngành công nghệ!",
-        "date": "Ngày 23 tháng 1, 2024",
+        "date": "2024-01-23",
         "avatar": "https://placehold.co/75x75"
       },
       {
@@ -257,7 +283,7 @@
         "name": "Trần Thị Lan",
         "job": "Chuyên Gia Marketing",
         "text": "Tôi rất ấn tượng với sự chuyên nghiệp và tận tâm của đội ngũ. Họ đã giúp tôi xây dựng chiến lược marketing hiệu quả, mang lại kết quả rõ rệt trong thời gian ngắn. Tôi chắc chắn sẽ tiếp tục hợp tác với họ trong tương lai.",
-        "date": "Ngày 23 tháng 1, 2024",
+        "date": "2024-01-23",
         "avatar": "https://placehold.co/75x75"
       },
       {
@@ -265,7 +291,7 @@
         "name": "Lê Quang Hòa",
         "job": "Giám Đốc Kinh Doanh",
         "text": "Là một người bận rộn, tôi cần dịch vụ nhanh chóng và hiệu quả. Công ty này đã đáp ứng được tất cả yêu cầu của tôi, từ việc tư vấn đến triển khai công việc. Họ luôn đảm bảo tiến độ và chất lượng, tôi rất hài lòng với kết quả đạt được.",
-        "date": "Ngày 23 tháng 1, 2024",
+        "date": "2024-01-23",
         "avatar": "https://placehold.co/75x75"
       }
     ]
@@ -313,11 +339,21 @@
         "id": 2,
         "title": "Du học Mỹ cần bao nhiêu tiền? Cập nhật 6 loại chi phí 2025",
         "description": "Mỹ không chỉ nổi tiếng với nền kinh tế vững mạnh mà còn được ghi nhận với hệ thống giáo dục tiên tiến và hàng đầu thế giới. Vì vậy, việc du học tại Mỹ luôn là lựa chọn ưu tiên của rất nhiều học sinh, sinh viên, cùng các bậc phụ huynh. Vậy, để du học Mỹ, bạn sẽ cần bao nhiêu tiền và các loại chi phí phải trả là gì? Cùng IDP tìm hiểu chi tiết trong bài viết này!",
-        "author": "Nami",
-        "date": "2024-12-20T09:40:36.293Z",
-        "categoryIds": [],
-        "content": "<p style=\"text-align: justify\"></p><hr><h4 style=\"text-align: justify\">1. Du học Mỹ cần bao nhiêu tiền?</h4><p style=\"text-align: justify\">Chi phí du học Mỹ dao động từ khoảng 30.000 đến 90.000 USD mỗi năm (tương đương từ 700 triệu đến 2 tỷ 2 VND). Tuy nhiên, mức chi phí này không cố định mà sẽ phụ thuộc vào nhiều yếu tố như: chương trình học, học bổng, chi phí sinh hoạt và địa điểm nơi bạn sinh sống.</p><p style=\"text-align: justify\"><strong>Các bạn có thể tham khảo mức chi phí du học theo từng bậc học dưới đây:</strong></p><img src=\"http://sky-solution.up.railway.app/uploads/1734687562206.png\"><p style=\"text-align: justify\"></p><hr><h4 style=\"text-align: justify\">2. Các loại chi phí khác khi du học Mỹ</h4><p style=\"text-align: justify\">Ngoài các khoản chi phí cơ bản, bạn còn cần phải thanh toán nhiều loại phí khác khi đi du học tại Mỹ, bao gồm: phí làm hồ sơ, visa, vé máy bay, chi phí sinh hoạt, bảo hiểm y tế...</p><h5 style=\"text-align: justify\">2.1. Phí visa và hồ sơ đăng ký học</h5><p style=\"text-align: justify\">Trước khi sang Mỹ, bạn sẽ cần chuẩn bị các khoản chi phí liên quan đến thủ tục visa và hồ sơ đăng ký học:</p><ul><li><p style=\"text-align: justify\"><strong>Phí ghi danh của trường</strong>: 50 – 100 USD</p></li><li><p style=\"text-align: justify\"><strong>Phí phỏng vấn visa</strong>: 185 USD</p></li><li><p style=\"text-align: justify\"><strong>Phí SEVIS</strong>: 350 USD</p></li></ul><p style=\"text-align: justify\"><strong>Chi phí Visa</strong><br>Để xin visa du học Mỹ, bạn sẽ cần đóng một khoản phí 185 USD (khoảng 3.800.000 VND). Đây là khoản phí không hoàn lại và chỉ áp dụng cho các sinh viên muốn sang Mỹ học tập.</p><p style=\"text-align: justify\"><strong>Chi phí hồ sơ đăng ký học</strong><br>Một số trường sẽ yêu cầu bạn nộp phí hồ sơ từ 50 USD đến 100 USD (khoảng 1.200.000 – 2.300.000 VND). Tuy nhiên, cũng có trường miễn phí phí hồ sơ này.</p><p style=\"text-align: justify\"><strong>Chi phí SEVIS</strong><br>Đối với sinh viên có mẫu đơn I-20, phí SEVIS là 350 USD (tương đương 8 triệu đồng). Phí này có hiệu lực từ khi bạn nhận đơn I-20 cho đến khi kết thúc chương trình học tại trường.</p><hr><h5 style=\"text-align: justify\">2.2. Chi phí vé máy bay</h5><p style=\"text-align: justify\">Giá vé máy bay một chiều từ Việt Nam đến Mỹ dao động trong khoảng từ 650 USD đến 1.000 USD (khoảng 15 triệu đến 23 triệu VND). Để tiết kiệm chi phí, bạn nên:</p><ul><li><p style=\"text-align: justify\">Đặt vé trước 2-3 tháng.</p></li><li><p style=\"text-align: justify\">Mua bảo hiểm vé để tránh việc dời hay hủy chuyến bay đột ngột.</p></li></ul><h5 style=\"text-align: justify\">2.3. Chi phí bảo hiểm</h5><p style=\"text-align: justify\">Chi phí bảo hiểm y tế cho sinh viên quốc tế tại Mỹ có mức giá trung bình khoảng 2.000 USD mỗi năm. Mặc dù mức chi này khá hợp lý so với chi phí khám chữa bệnh tại Mỹ, nhưng vẫn cần tính toán khi lên kế hoạch tài chính.</p><h5 style=\"text-align: justify\">2.4. Học phí</h5><p style=\"text-align: justify\">Chi phí học phí tại Mỹ thay đổi tùy theo trường và bậc học. Các trường công lập thường có học phí thấp hơn các trường tư. Cụ thể:</p><img src=\"http://sky-solution.up.railway.app/uploads/1734687830303.png\"><p style=\"text-align: justify\">Ngoài học phí, bạn cũng cần tính đến chi phí cho tài liệu học tập và sách vở, khoảng 1.240 – 1.460 USD mỗi năm.</p><h5 style=\"text-align: justify\">2.5. Chi phí sinh hoạt</h5><p style=\"text-align: justify\">Sinh hoạt phí bao gồm các khoản như nhà ở, ăn uống, đi lại, giải trí, và các chi phí khác:</p><p style=\"text-align: justify\"><strong>Chi phí nhà ở</strong><br>Bạn có thể lựa chọn ký túc xá, ở cùng người bản xứ (Homestay), hoặc thuê nhà chung:</p><p style=\"text-align: justify\">Loại hình nhà ởChi phí trung bình<strong>Ký túc xá</strong>12,000 – 20,000 USD/năm<strong>Homestay</strong>10,000 – 20,000 USD/năm<strong>Nhà chung</strong>400 – 1,000 USD/tháng</p><p style=\"text-align: justify\"><strong>Chi phí ăn uống</strong><br>Chi phí ăn uống cho sinh viên dao động từ 300 đến 500 USD mỗi tháng. Bạn có thể tiết kiệm bằng cách tự nấu ăn thay vì ăn ngoài.</p><p style=\"text-align: justify\"><strong>Chi phí đi lại</strong><br>Mức chi phí đi lại trung bình là khoảng 90 – 130 USD mỗi tháng, tùy vào phương tiện bạn sử dụng:</p><p style=\"text-align: justify\">Phương tiệnChi phí trung bình<strong>Xe buýt</strong>90 USD/tháng<strong>Tàu điện ngầm/xe lửa</strong>90 – 130 USD/tháng<strong>Taxi</strong>3 – 5 USD/km</p><p style=\"text-align: justify\"><strong>Các chi phí sinh hoạt khác</strong><br>Ngoài các khoản trên, bạn cần dành một khoản cho điện, internet, mua sắm, giải trí...:</p><p style=\"text-align: justify\">Hạng mục sinh hoạtChi phí trung bình<strong>Internet, điện thoại</strong>20 USD/tháng<strong>Mua sắm</strong>100 USD/tháng<strong>Giải trí</strong>50 – 100 USD/tháng</p><hr><h4 style=\"text-align: justify\">3. Cách giảm áp lực tài chính khi du học Mỹ</h4><p style=\"text-align: justify\">Sau khi biết chi phí du học Mỹ, nhiều học sinh và phụ huynh lo lắng về vấn đề tài chính. Tuy nhiên, có nhiều cách để giảm bớt chi phí du học:</p><h5 style=\"text-align: justify\">3.1. Xin học bổng</h5><p style=\"text-align: justify\">Học bổng là một giải pháp hiệu quả để giảm chi phí du học. Để xin học bổng, bạn cần chuẩn bị hồ sơ thật tốt, chú trọng vào khả năng tiếng Anh, thành tích học tập, và các hoạt động ngoại khóa.</p><h5 style=\"text-align: justify\">3.2. Tự nấu ăn</h5><p style=\"text-align: justify\">Thay vì ăn ngoài, bạn có thể tự nấu ăn để tiết kiệm chi phí sinh hoạt. Một tháng tự nấu ăn sẽ giúp bạn tiết kiệm đáng kể so với việc ăn tại nhà hàng.</p><h5 style=\"text-align: justify\">3.3. Mua sách cũ hoặc mượn sách</h5><p style=\"text-align: justify\">Thay vì mua sách mới, bạn có thể mua sách cũ hoặc mượn sách từ thư viện để tiết kiệm chi phí.</p><h5 style=\"text-align: justify\">3.4. Làm thêm theo quy định</h5><p style=\"text-align: justify\">Sinh viên quốc tế có thể làm thêm trong khuôn viên trường (theo quy định Visa F1). Bạn cũng có thể tìm việc làm thêm ngoài trường nếu có sự cho phép.</p><h5 style=\"text-align: justify\">3.5. Chọn trường phù hợp</h5><p style=\"text-align: justify\">Chọn trường có mức học phí phù hợp với khả năng tài chính của gia đình là một cách giúp bạn tiết kiệm chi phí du học.</p><hr><p style=\"text-align: justify\">Hy vọng rằng những thông tin trên sẽ giúp bạn có cái nhìn rõ ràng về chi phí du học Mỹ và những cách thức tiết kiệm. Nếu bạn cần thêm tư vấn chi tiết, đừng ngần ngại liên hệ với IDP để được hỗ trợ miễn phí!</p>",
+        "author": "Author",
+        "date": "December 17, 2024",
+        "content": "<h4>1. <em>Du học Mỹ cần bao nhiêu tiền?</em></h4><p style=\"text-align: left\">Chi phí du học Mỹ dao động từ khoảng 30.000 đến 90.000 USD mỗi năm (tương đương từ 700 triệu đến 2 tỷ 2 VND). Tuy nhiên, mức chi phí này không cố định mà sẽ phụ thuộc vào nhiều yếu tố như: chương trình học, học bổng, chi phí sinh hoạt và địa điểm nơi bạn sinh sống.</p><p style=\"text-align: justify\"><strong>Các bạn có thể tham khảo mức chi phí du học theo từng bậc học dưới đây:</strong></p><img class=\"w-[80%] mx-auto\" src=\"http://sky-solution.up.railway.app/uploads/1734687562206.png\"><p style=\"text-align: justify\"></p><hr><h4>2. Các loại chi phí khác khi du học Mỹ</h4><p style=\"text-align: justify\">Ngoài các khoản chi phí cơ bản, bạn còn cần phải thanh toán nhiều loại phí khác khi đi du học tại Mỹ, bao gồm: phí làm hồ sơ, visa, vé máy bay, chi phí sinh hoạt, bảo hiểm y tế...</p><h5>2.1. Phí visa và hồ sơ đăng ký học</h5><p style=\"text-align: justify\">Trước khi sang Mỹ, bạn sẽ cần chuẩn bị các khoản chi phí liên quan đến thủ tục visa và hồ sơ đăng ký học:</p><ul><li><p style=\"text-align: justify\"><strong>Phí ghi danh của trường</strong>: 50 – 100 USD</p></li><li><p style=\"text-align: justify\"><strong>Phí phỏng vấn visa</strong>: 185 USD</p></li><li><p style=\"text-align: justify\"><strong>Phí SEVIS</strong>: 350 USD</p></li></ul><p style=\"text-align: justify\"><strong>Chi phí Visa</strong><br>Để xin visa du học Mỹ, bạn sẽ cần đóng một khoản phí 185 USD (khoảng 3.800.000 VND). Đây là khoản phí không hoàn lại và chỉ áp dụng cho các sinh viên muốn sang Mỹ học tập.</p><p style=\"text-align: justify\"><strong>Chi phí hồ sơ đăng ký học</strong><br>Một số trường sẽ yêu cầu bạn nộp phí hồ sơ từ 50 USD đến 100 USD (khoảng 1.200.000 – 2.300.000 VND). Tuy nhiên, cũng có trường miễn phí phí hồ sơ này.</p><p style=\"text-align: justify\"><strong>Chi phí SEVIS</strong><br>Đối với sinh viên có mẫu đơn I-20, phí SEVIS là 350 USD (tương đương 8 triệu đồng). Phí này có hiệu lực từ khi bạn nhận đơn I-20 cho đến khi kết thúc chương trình học tại trường.</p><hr><h5>2.2. Chi phí vé máy bay</h5><p style=\"text-align: justify\">Giá vé máy bay một chiều từ Việt Nam đến Mỹ dao động trong khoảng từ 650 USD đến 1.000 USD (khoảng 15 triệu đến 23 triệu VND). Để tiết kiệm chi phí, bạn nên:</p><ul><li><p style=\"text-align: justify\">Đặt vé trước 2-3 tháng.</p></li><li><p style=\"text-align: justify\">Mua bảo hiểm vé để tránh việc dời hay hủy chuyến bay đột ngột.</p></li></ul><h5>2.3. Chi phí bảo hiểm</h5><p style=\"text-align: justify\">Chi phí bảo hiểm y tế cho sinh viên quốc tế tại Mỹ có mức giá trung bình khoảng 2.000 USD mỗi năm. Mặc dù mức chi này khá hợp lý so với chi phí khám chữa bệnh tại Mỹ, nhưng vẫn cần tính toán khi lên kế hoạch tài chính.</p><h5>2.4. Học phí</h5><p style=\"text-align: justify\">Chi phí học phí tại Mỹ thay đổi tùy theo trường và bậc học. Các trường công lập thường có học phí thấp hơn các trường tư. Cụ thể:</p><img class=\"w-[80%] mx-auto\" src=\"http://sky-solution.up.railway.app/uploads/1734687830303.png\"><p style=\"text-align: justify\">Ngoài học phí, bạn cũng cần tính đến chi phí cho tài liệu học tập và sách vở, khoảng 1.240 – 1.460 USD mỗi năm.</p><h5>2.5. Chi phí sinh hoạt</h5><p style=\"text-align: justify\">Sinh hoạt phí bao gồm các khoản như nhà ở, ăn uống, đi lại, giải trí, và các chi phí khác:</p><p style=\"text-align: justify\"><strong>Chi phí nhà ở</strong><br>Bạn có thể lựa chọn ký túc xá, ở cùng người bản xứ (Homestay), hoặc thuê nhà chung:</p><p style=\"text-align: justify\">Loại hình nhà ởChi phí trung bình<strong>Ký túc xá</strong>12,000 – 20,000 USD/năm<strong>Homestay</strong>10,000 – 20,000 USD/năm<strong>Nhà chung</strong>400 – 1,000 USD/tháng</p><p style=\"text-align: justify\"><strong>Chi phí ăn uống</strong><br>Chi phí ăn uống cho sinh viên dao động từ 300 đến 500 USD mỗi tháng. Bạn có thể tiết kiệm bằng cách tự nấu ăn thay vì ăn ngoài.</p><p style=\"text-align: justify\"><strong>Chi phí đi lại</strong><br>Mức chi phí đi lại trung bình là khoảng 90 – 130 USD mỗi tháng, tùy vào phương tiện bạn sử dụng:</p><p style=\"text-align: justify\">Phương tiệnChi phí trung bình<strong>Xe buýt</strong>90 USD/tháng<strong>Tàu điện ngầm/xe lửa</strong>90 – 130 USD/tháng<strong>Taxi</strong>3 – 5 USD/km</p><p style=\"text-align: justify\"><strong>Các chi phí sinh hoạt khác</strong><br>Ngoài các khoản trên, bạn cần dành một khoản cho điện, internet, mua sắm, giải trí...:</p><p style=\"text-align: justify\">Hạng mục sinh hoạtChi phí trung bình<strong>Internet, điện thoại</strong>20 USD/tháng<strong>Mua sắm</strong>100 USD/tháng<strong>Giải trí</strong>50 – 100 USD/tháng</p><hr><h4>3. Cách giảm áp lực tài chính khi du học Mỹ</h4><p style=\"text-align: justify\">Sau khi biết chi phí du học Mỹ, nhiều học sinh và phụ huynh lo lắng về vấn đề tài chính. Tuy nhiên, có nhiều cách để giảm bớt chi phí du học:</p><h5>3.1. Xin học bổng</h5><p style=\"text-align: justify\">Học bổng là một giải pháp hiệu quả để giảm chi phí du học. Để xin học bổng, bạn cần chuẩn bị hồ sơ thật tốt, chú trọng vào khả năng tiếng Anh, thành tích học tập, và các hoạt động ngoại khóa.</p><h5>3.2. Tự nấu ăn</h5><p style=\"text-align: justify\">Thay vì ăn ngoài, bạn có thể tự nấu ăn để tiết kiệm chi phí sinh hoạt. Một tháng tự nấu ăn sẽ giúp bạn tiết kiệm đáng kể so với việc ăn tại nhà hàng.</p><h5>3.3. Mua sách cũ hoặc mượn sách</h5><p style=\"text-align: justify\">Thay vì mua sách mới, bạn có thể mua sách cũ hoặc mượn sách từ thư viện để tiết kiệm chi phí.</p><h5>3.4. Làm thêm theo quy định</h5><p style=\"text-align: justify\">Sinh viên quốc tế có thể làm thêm trong khuôn viên trường (theo quy định Visa F1). Bạn cũng có thể tìm việc làm thêm ngoài trường nếu có sự cho phép.</p><h5>3.5. Chọn trường phù hợp</h5><p style=\"text-align: justify\">Chọn trường có mức học phí phù hợp với khả năng tài chính của gia đình là một cách giúp bạn tiết kiệm chi phí du học.</p><hr><p style=\"text-align: justify\">Hy vọng rằng những thông tin trên sẽ giúp bạn có cái nhìn rõ ràng về chi phí du học Mỹ và những cách thức tiết kiệm. Nếu bạn cần thêm tư vấn chi tiết, đừng ngần ngại liên hệ với IDP để được hỗ trợ miễn phí!</p>",
         "thumb": "http://sky-solution.up.railway.app/uploads/1734687902689.jpg",
+        "isPopular": false
+      },
+      {
+        "id": 1,
+        "title": "test",
+        "description": "test",
+        "author": "test",
+        "date": "2025-02-04T05:58:09.022Z",
+        "categoryIds": [],
+        "content": "<h3>ádasdasd</h3><p>ádasdsadsad</p><p><code>ádasdsad</code></p><ul><li><p><code>ádasd</code></p></li><li><p><code>ádasdsad</code></p><p style=\"text-align: left\"><br>ádasdasdasdsad</p></li><li><p style=\"text-align: left\">ádasdasdsad</p></li><li><p style=\"text-align: left\">ádasdasdasd</p></li></ul><ol><li><p style=\"text-align: left\"></p></li></ol><p></p>",
+        "thumb": "http://localhost:3001/uploads/1738648616236.png",
         "isPopular": false
       }
     ]
@@ -327,10 +363,10 @@
       "id": 1735379863839,
       "job": "Crew Member",
       "salary": "10/h",
-      "salaryVND": 40728000,
+      "salaryVND": "40728000",
       "place": "GABS, LaGrange",
       "estimatedFilingDate": "17/02/2025",
-      "spot": 34,
+      "spot": "34",
       "company": "Sponsored by JSA Georgia, Inc.",
       "signature": "",
       "jobDescription": "Perform duties such as taking orders and serving food and beverages. Serve customers. May take payment and prepare food and beverages.",
@@ -341,10 +377,10 @@
       "id": 4783,
       "job": "Crew Member",
       "salary": "10/h",
-      "salaryVND": 40728000,
-      "place": "AL, Phenix City",
+      "salaryVND": "40728000",
+      "place": "AL, Phenix Cityy",
       "estimatedFilingDate": "17/02/2025",
-      "spot": 39,
+      "spot": "39",
       "company": "Sponsored by JSA Bama, Inc.",
       "signature": "",
       "jobDescription": "Perform duties such as taking orders and serving food and beverages. Serve customers. May take payment and prepare food and beverages.",
@@ -355,10 +391,10 @@
       "id": 6542,
       "job": "Crew Member",
       "salary": "10/h",
-      "salaryVND": 40728000,
+      "salaryVND": "40728000",
       "place": "GA, Columbus",
       "estimatedFilingDate": "17/02/2025",
-      "spot": 65,
+      "spot": "65",
       "company": "Sponsored by JSA Georgia, Inc.",
       "signature": "",
       "jobDescription": "Perform duties such as taking orders and serving food and beverages. Serve customers. May take payment and prepare food and beverages.",
@@ -495,10 +531,10 @@
       "id": 1345,
       "job": "Service assistant",
       "salary": "16/h",
-      "salaryVND": 65164800,
-      "place": "CA, Hesperia",
+      "salaryVND": "65164800",
+      "place": "CA, Hesperiaa",
       "estimatedFilingDate": "27/01/2025",
-      "spot": 22,
+      "spot": "22",
       "company": "Sponsored by DENCO ENTERPRISES INC",
       "signature": "",
       "jobDescription": "Facilitate food service. Clean tables; remove dirty dishes; replace soiled table linens; set tables; replenish supply of clean linens, silverware, glassware, and dishes; keep front and back of house area clean, organized and stocked.",
