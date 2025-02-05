@@ -254,6 +254,23 @@ app.get('/api/data/home', (req, res) => {
   });
 });
 
+
+// get sheet data
+app.get('/api/data/sheet', (req, res) => {
+
+  res.json(jsonData.sheetData);
+});
+
+// update sheet data
+app.post('/api/data/sheet', (req, res) => {
+  if (!req.body) {
+    return res.status(400).json({error: 'Invalid data.'});
+}
+jsonData.sheetData = req.body;
+fs.writeFileSync(dataFilePath, JSON.stringify(jsonData, null, 2));
+res.status(200).json({message: 'Data saved successfully.'});
+});
+
 // API endpoint for image upload
 app.post('/api/upload',authenticateAdmin, upload.single('image'), (req, res) => {
   console.log('req.file',req.file);
@@ -325,6 +342,11 @@ const paginate = (array, page, limit) => {
       limit: parseInt(limit)
     });
   });
+  //API get 3  newest popular blogs
+  app.get('/api/data/blogs/popular', (req, res) => {
+    const popularBlogs = jsonData.blogData.blogs.filter(blog => blog.isPopular).sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
+    res.status(200).json(popularBlogs);
+  });
   // API endpoint to get an existing blog
   app.get('/api/data/blogs/:id', (req, res) => {
         const { id } = req.params;
@@ -372,7 +394,7 @@ const paginate = (array, page, limit) => {
   // API endpoint to edit an existing blog
   app.put('/api/data/blogs/:id', authenticateAdmin, (req, res) => {
     const { id } = req.params;
-    const { title, description, author, categoryIds, content, thumb,date } = req.body;
+    const { title, description, author, categoryIds, content, thumb,date,isPopular } = req.body;
   
     const blogIndex = jsonData.blogData.blogs.findIndex(blog => blog.id === parseInt(id));
   
@@ -381,7 +403,7 @@ const paginate = (array, page, limit) => {
     }
   
     // Update blog
-    const updatedBlog = { ...jsonData.blogData.blogs[blogIndex], title, description,date, author, categoryIds, content, thumb };
+    const updatedBlog = { ...jsonData.blogData.blogs[blogIndex], title, description,date, author, categoryIds, content, thumb,isPopular };
     jsonData.blogData.blogs[blogIndex] = updatedBlog;
   
     fs.writeFileSync(dataFilePath, JSON.stringify(jsonData, null, 2));
