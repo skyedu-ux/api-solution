@@ -5,6 +5,9 @@ import fs from "fs";
 import bodyParser from "body-parser";
 import { fileURLToPath } from 'url';
 import multer from 'multer';
+import blogRoutes from './routes/blogs.js';
+import jobRoutes from './routes/jobs.js';
+import {authenticateAdmin} from './middleware/auth.js'
 import jwt from 'jsonwebtoken';
 import cookieParser from 'cookie-parser';
 const SECRET_KEY = 'your_secret_key';
@@ -12,24 +15,7 @@ const SECRET_KEY = 'your_secret_key';
 
 
 
-// Create a storage object for multer
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        // Specify the destination for uploaded files
-        const uploadDir = path.join(__dirname, 'uploads');
-        if (!fs.existsSync(uploadDir)) {
-            fs.mkdirSync(uploadDir); // Create the uploads directory if it doesn't exist
-        }
-        cb(null, uploadDir);
-    },
-    filename: (req, file, cb) => {
-        // Set the filename for the uploaded file
-        cb(null, Date.now() + path.extname(file.originalname)); // Append timestamp to avoid duplicate filenames
-    }
-});
 
-// Initialize multer with the storage configuration
-const upload = multer({ storage });
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -39,7 +25,7 @@ app.use(cookieParser());
 
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? 'your-production-domain.com'  // Replace with your actual production domain
+    ? 'https://sky-solution.vercel.app'  // Replace with your actual production domain
     : 'http://localhost:3000',      // Development frontend URL
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -58,29 +44,26 @@ if (fs.existsSync(dataFilePath)) {
     jsonData = JSON.parse(rawData);
 }
 
-// Middleware to check authentication
-const authenticateAdmin = (req, res, next) => {
-    const {role} = req.query;
-     if(role === 'user'){
-        return next()
-     }
 
-     const token = req.cookies?.access_token || req.headers.authorization?.split(' ')[1]; 
 
-    if (!token) {
-        return res.status(401).json({ error: 'Unauthorized: No token provided' });
-    }
-    try {
-        const decoded = jwt.verify(token, SECRET_KEY);
-        if (decoded.role === 'admin') {
-            return next(); // Proceed to the next middleware or route
-        } else {
-            return res.status(403).json({ error: 'Unauthorized' });
-        }
-    } catch (error) {
-        return res.status(401).json({ error: 'Unauthorized: Invalid token' });
-    }
-};
+// Create a storage object for multer
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+      // Specify the destination for uploaded files
+      const uploadDir = path.join(__dirname, 'uploads');
+      if (!fs.existsSync(uploadDir)) {
+          fs.mkdirSync(uploadDir); // Create the uploads directory if it doesn't exist
+      }
+      cb(null, uploadDir);
+  },
+  filename: (req, file, cb) => {
+      // Set the filename for the uploaded file
+      cb(null, Date.now() + path.extname(file.originalname)); // Append timestamp to avoid duplicate filenames
+  }
+});
+
+// Initialize multer with the storage configuration
+const upload = multer({ storage });
 
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -277,246 +260,17 @@ app.post('/api/upload',authenticateAdmin, upload.single('image'), (req, res) => 
     if (!req.file) {
         return res.status(400).json({error: 'No file uploaded.'});
     }
-    
-        // const oldImageName = req.body.oldImageName;
-        // const oldImagePath = path.join(__dirname, 'uploads', oldImageName);
-    
-        // if (oldImageName) {
-        //     fs.unlink(oldImagePath, (err) => {
-        //         if (err) {
-        //             console.error('Error deleting old image:', err);
-                
-        //         } else {
-        //             console.log('Old image deleted successfully.');
-        //         }
-        //     });
-        // }
         const fullPath = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
     res.status(200).json({
         message: 'File uploaded successfully.',
         filePath: fullPath 
     });
 });
-
-///blogs
-
-// Add the following to your existing API file
-
-// Utility function for pagination
-const paginate = (array, page, limit) => {
-    const startIndex = (page - 1) * limit;
-    const endIndex = page * limit;
-    return array.slice(startIndex, endIndex);
-  };
-  
-  // Helper function for searching
-  const searchBlogs = (blogs, query) => {
-    if (!query) return blogs;
-    return blogs.filter(blog => 
-      blog.title.toLowerCase().includes(query.toLowerCase()) ||
-      blog.description.toLowerCase().includes(query.toLowerCase())
-    );
-  };
-  
-  // Helper function for filtering by category
-  const filterBlogsByCategory = (blogs, categoryIds) => {
-    if (!categoryIds || categoryIds.length === 0) return blogs;
-    return blogs.filter(blog => 
-      blog.categoryIds.some(id => categoryIds.includes(id))
-    );
-  };
-  
-  // API endpoint to get a list of blogs with pagination, search, and category filter
-  app.get('/api/data/blogs', (req, res) => {
-    const { page = 1, limit = 10, search = '', categoryIds = [] } = req.query;
-  
-    const filteredBlogs = searchBlogs(jsonData.blogData.blogs, search);
-    const categoryFilteredBlogs = filterBlogsByCategory(filteredBlogs, categoryIds);
-    const paginatedBlogs = paginate(categoryFilteredBlogs, parseInt(page), parseInt(limit));
-  
-    res.status(200).json({
-      blogs: paginatedBlogs,
-      totalBlogs: categoryFilteredBlogs.length,
-      totalPages: Math.ceil(categoryFilteredBlogs.length / limit),
-      page: parseInt(page),
-      limit: parseInt(limit)
-    });
-  });
-  //API get 3  newest popular blogs
-  app.get('/api/data/blogs/popular', (req, res) => {
-    const popularBlogs = jsonData.blogData.blogs.filter(blog => blog.isPopular).sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
-    res.status(200).json(popularBlogs);
-  });
-  // API endpoint to get an existing blog
-  app.get('/api/data/blogs/:id', (req, res) => {
-        const { id } = req.params;
-  
-      
-        const blogIndex = jsonData.blogData.blogs.findIndex(blog => blog.id === parseInt(id));
-      
-        if (blogIndex === -1) {
-          return res.status(404).json({ message: 'Blog not found' });
-        }
-      
-     
-      
-        res.status(200).json({
-            data: (jsonData.blogData.blogs)[blogIndex]
-        });
-      });
-  
-  // API endpoint to create a new blog
-  app.post('/api/data/blogs', authenticateAdmin, (req, res) => {
-    const { title, description, author, categoryIds, content, thumb } = req.body;
-    
-    if (!title || !description || !author || !content) {
-      return res.status(400).json({ error: 'Missing required fields' });
-    }
-  
-    const newBlog = {
-      id: jsonData.blogData.blogs.length + 1,  // Generate a new ID
-      title,
-      description,
-      author,
-      date: new Date().toISOString(),
-      categoryIds : categoryIds || [],
-      content,
-      thumb,
-      isPopular: false  // Default value
-    };
-  
-    jsonData.blogData.blogs.push(newBlog);
-    fs.writeFileSync(dataFilePath, JSON.stringify(jsonData, null, 2));
-  
-    res.status(201).json(newBlog);
-  });
-
-  // API endpoint to edit an existing blog
-  app.put('/api/data/blogs/:id', authenticateAdmin, (req, res) => {
-    const { id } = req.params;
-    const { title, description, author, categoryIds, content, thumb,date,isPopular } = req.body;
-  
-    const blogIndex = jsonData.blogData.blogs.findIndex(blog => blog.id === parseInt(id));
-  
-    if (blogIndex === -1) {
-      return res.status(404).json({ message: 'Blog not found' });
-    }
-  
-    // Update blog
-    const updatedBlog = { ...jsonData.blogData.blogs[blogIndex], title, description,date, author, categoryIds, content, thumb,isPopular };
-    jsonData.blogData.blogs[blogIndex] = updatedBlog;
-  
-    fs.writeFileSync(dataFilePath, JSON.stringify(jsonData, null, 2));
-  
-    res.status(200).json(updatedBlog);
-  });
-  
-  // API endpoint to delete a blog
-  app.delete('/api/data/blogs/:id', authenticateAdmin, (req, res) => {
-    const { id } = req.params;
-    
-    const blogIndex = jsonData.blogData.blogs.findIndex(blog => blog.id === parseInt(id));
-    
-    if (blogIndex === -1) {
-      return res.status(404).json({ error: 'Blog not found' });
-    }
-    
-    jsonData.blogData.blogs.splice(blogIndex, 1);
-    fs.writeFileSync(dataFilePath, JSON.stringify(jsonData, null, 2));
-    
-    res.status(200).json({ message: 'Blog deleted successfully' });
-  });
-
-    
-  // API endpoint to get a list of blogs with pagination, search, and category filter
-  app.get('/api/data/jobs', (req, res) => {
-    const { page = 1, limit = 10, search = '' } = req.query;
-  
-    
-   
-    const paginateJobs = paginate(jsonData.jobData, parseInt(page), parseInt(limit));
-  
-    res.status(200).json({
-      jobs: paginateJobs,
-      totalJobs: jsonData.jobData.length,
-      totalPages: Math.ceil(jsonData.jobData.length / limit),
-      page: parseInt(page),
-      limit: parseInt(limit)
-    });
-  });
-  
-
-  // APi create a job
-    app.post('/api/data/job', authenticateAdmin, (req, res) => {
-        const { id,place,benefit, jobDescription, salary, company ,salaryVND,estimatedFilingDate,note,signature,spot } = req.body;
-        if(!jobDescription ){
-            return res.status(400).json({ error: 'Missing required fields' });
-        }
-        // if ( !jobDescription || !salary || !company || !salaryVND || !place || !estimatedFilingDate || !benefit   || !spot) {
-        // return res.status(400).json({ error: 'Missing required fields' });
-        // }
-    
-        const newJob = {
-          ...req.body,
-          id: jsonData.jobData.length + 1
-        };
-    
-        jsonData.jobData.push(newJob);
-        fs.writeFileSync(dataFilePath, JSON.stringify(jsonData, null, 2));
-    
-        res.status(201).json(newJob);
-    });
-
-      // API endpoint to delete a job
-  app.delete('/api/data/jobs/:id', authenticateAdmin, (req, res) => {
-    const { id } = req.params;
-    
-    const jobIndex = jsonData.jobData.findIndex(job => job.id === parseInt(id));
-    
-    if (jobIndex === -1) {
-      return res.status(404).json({ error: 'Job not found' });
-    }
-    
-    jsonData.jobData.splice(jobIndex, 1);
-    fs.writeFileSync(dataFilePath, JSON.stringify(jsonData, null, 2));
-    
-    res.status(200).json({ message: 'Job deleted successfully' });
-  });
-
-    // API endpoint to edit an existing job
-    app.put('/api/data/jobs/:id', authenticateAdmin, (req, res) => {
-        const { id } = req.params;
-        const { jobDescription, salary, company ,salaryVND,place,estimatedFilingDate,benefit,note,signature,spot } = req.body;
-      
-        const jobIndex = jsonData.jobData.findIndex(job => job.id === parseInt(id));
-      
-        if (jobIndex === -1) {
-          return res.status(404).json({ message: 'Job not found' });
-        }
-      
-        // Update job
-        const updatedJob = { ...jsonData.jobData[jobIndex],...req.body};
-        jsonData.jobData[jobIndex] = updatedJob;
-      
-        fs.writeFileSync(dataFilePath, JSON.stringify(jsonData, null, 2));
-      
-        res.status(200).json(updatedJob); })
+app.locals.dataFilePath = dataFilePath; 
+app.use('/api/data/blogs', blogRoutes);
+app.use('/api/data/jobs', jobRoutes);
 
 
-        // API endpoint to get an existing job
-    app.get('/api/data/jobs/:id', (req, res) => {
-        const { id } = req.params;
-      
-        const jobIndex = jsonData.jobData.findIndex(job => job.id === parseInt(id));
-      
-        if (jobIndex === -1) {
-          return res.status(404).json({ message: 'Job not found' });
-        }
-      
-        res.status(200).json(jsonData.jobData[jobIndex]);
-      })
-
-// app.use(handler);
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
