@@ -24,9 +24,7 @@ const __dirname = dirname(__filename);
 app.use(cookieParser());
 
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? 'https://sky-solution.vercel.app'  // Replace with your actual production domain
-    : 'http://localhost:3000',      // Development frontend URL
+  origin: 'https://sky-solution.vercel.app',     // Development frontend URL
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
