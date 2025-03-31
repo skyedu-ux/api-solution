@@ -84,6 +84,17 @@ router.put('/:id', authenticateAdmin, (req, res) => {
   res.status(200).json(updatedJob);
 });
 
+// edit job
+router.put('/',authenticateAdmin,(req, res) => {
+
+  const jsonData = getJsonData(req.app.locals.dataFilePath);
+  jsonData.jobData = req.body
+  saveJsonData(req.app.locals.dataFilePath, jsonData);
+  res.status(200).json({
+    message: "Update successfully!"
+  });
+})
+
 // Get a specific job
 router.get('/:id', (req, res) => {
   const { id } = req.params;
