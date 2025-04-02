@@ -24,7 +24,7 @@ const __dirname = dirname(__filename);
 app.use(cookieParser());
 
 app.use(cors({
-  origin: 'https://sky-solution.vercel.app',     // Development frontend URL
+  origin: 'https://www.skysolution.com.vn',     // Development frontend URL
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
