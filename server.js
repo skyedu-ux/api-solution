@@ -24,7 +24,8 @@ const __dirname = dirname(__filename);
 app.use(cookieParser());
 
 app.use(cors({
-  origin: 'https://www.skysolution.com.vn',     // Development frontend URL
+  origin: 'https://www.skysolution.com.vn',    
+//   origin: 'http://localhost:3000',     
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
@@ -33,7 +34,7 @@ app.use(cors({
 app.use(bodyParser.json());
 
 // Path to your JSON file
-const dataFilePath = path.join(__dirname, 'data.json');
+const dataFilePath = path.join(__dirname, 'uploads/data.json');
 
 // Load existing data from JSON file
 let jsonData = {};
